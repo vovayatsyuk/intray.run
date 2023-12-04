@@ -1,0 +1,149 @@
+@import 'microtip';
+@import 'simplebar';
+
+/* Hide tooltip on focused elements */
+[aria-label][role~="tooltip"]:not([data-microtip-focus]):not(:hover):focus:not(:focus-visible)::before,
+[aria-label][role~="tooltip"]:not([data-microtip-focus]):not(:hover):focus:not(:focus-visible)::after {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@tailwind base;
+
+* { outline: none; }
+:focus-visible {
+    @apply ring-2 ring-offset-2 ring-blue-600;
+}
+.dark :focus-visible {
+    @apply ring-blue-500 ring-offset-zinc-900;
+}
+[x-cloak] { display: none !important; }
+
+body {
+    background-repeat: no-repeat;
+    background-size: 100% 700px;
+    background-image:
+        radial-gradient(at 37% 100px, hsla(158,71%,60%,0.13) 0%, transparent 25%),
+        radial-gradient(at 70% 220px, hsla(240,100%,70%,0.15) 0%, transparent 20%),
+        radial-gradient(at 25% 300px, hsla(343,100%,76%,0.15) 0%, transparent 30%);
+}
+
+@media (min-width: 768px) {
+    body {
+        background-size: 100% 1500px;
+    }
+}
+
+@tailwind components;
+
+.animate-typing {
+    max-width: 0;
+    overflow: hidden;
+    border-right: 2px solid transparent;
+    animation:
+        typing 2s steps(24, end) forwards,
+        caret 1.6s steps(10, end);
+}
+.animate-typing.erase {
+    animation:
+        typing 2s steps(24, end) forwards,
+        caret 1.6s steps(10, end),
+        erase 1s forwards 0s;
+}
+.animate-typing.fast {
+    animation-duration: 500ms;
+}
+.animate-typing.caret-infinite {
+    animation:
+        typing 2s steps(24, end) forwards,
+        caret 1.6s steps(10, end) infinite;
+}
+@keyframes typing {
+    from { max-width: 0 }
+    to { max-width: 100%; }
+}
+@keyframes caret {
+    from, to { border-color: rgba(255,255,255,.5) }
+    50% { border-color: transparent }
+}
+@keyframes erase {
+    from { max-height: 50rem; }
+    to { max-height: 0; }
+}
+@keyframes hide {
+    from { max-height: 50rem }
+    50.0% { max-height: 50rem }
+    50.1% { max-height: 0 }
+    to { max-height: 0 }
+}
+
+.off-mask.shown ~ * {
+    --brightness: 20;
+    filter: grayscale(100%) brightness(var(--brightness)) blur(20px) opacity(50%);
+    transition: filter .1s ease-in;
+}
+.dark .off-mask.shown ~ * {
+    --brightness: .9;
+}
+.off-mask,
+.off-mask::after,
+.off-mask::before {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    content: '';
+    z-index: 100;
+    pointer-events: none;
+}
+.off-mask {
+    opacity: 0;
+    background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0) .1%, rgba(0,0,0,1) .1%, rgba(0,0,0,1) 100%);
+    background-size: 100000% 100000%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+.off-mask::before {
+    top: 0;
+    bottom: 50%;
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) calc(50% + .5px), rgba(0,0,0,1) calc(50% + .5px), rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    background-position: 0 100%;
+}
+.off-mask::after {
+    bottom: 0;
+    top: 50%;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) calc(50% + .5px), rgba(0,0,0,1) calc(50% + .5px), rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    background-position: 0 0;
+}
+.off-mask.shown {
+    opacity: 1;
+    pointer-events: auto;
+    animation: .4s turn-off-center .4s cubic-bezier(.22,1,.93,.83) forwards;
+}
+.off-mask.shown::before {
+    animation: turn-off-down .3s cubic-bezier(0,.8,1,1) forwards;
+    animation-delay: .1s;
+}
+.off-mask.shown::after {
+    animation: turn-off-up .3s cubic-bezier(0,.8,1,1) forwards;
+    animation-delay: .1s;
+}
+@keyframes turn-off-down {
+    0% { background-position: 0 100%; }
+    100% { background-position: 0 0; }
+}
+@keyframes turn-off-up {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+@keyframes turn-off-center {
+    50% { background-size: 12000% 12000%; }
+    82% { background-size: 8000% 8000%; }
+    99% { background-size: 200% 200%; background-position: 50% 50%; }
+    100% { background-size: 200% 200%; background-position: 50% 100%; }
+}
+
+@tailwind utilities;

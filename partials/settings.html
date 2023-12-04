@@ -1,0 +1,70 @@
+<div x-data="settings" x-trap="popup === 'settings'" class="absolute left-0 right-0 rounded-lg bg-white/80 ring-[0.5px] ring-gray-300 shadow-xl dark:bg-zinc-900/80 dark:text-zinc-300 dark:ring-zinc-700 -mt-4">
+  <div class="p-2.5 py-2 group">
+    <button @click="popup = ''" class="relative w-3 h-3 flex items-center justify-center cursor-default rounded-full group">
+      <svg class="text-red-500 absolute" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg>
+      <svg class="text-red-900 absolute opacity-0 transition group-hover:opacity-100 group-focus:opacity-100" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="h-full p-6 pt-2 pb-12 space-y-5 overflow-auto">
+    <div class="grid grid-cols-12 gap-4 items-start">
+      <label class="col-span-4 block text-right font-medium text-gray-700 dark:text-zinc-400 pt-2">Autostart</label>
+      <div class="col-span-8 pt-1.5">
+        <button @click="autostart = !autostart"
+          class="bg-gray-200 dark:bg-zinc-700 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full transition-colors duration-200 ease-in-out"
+          :class="{
+            'bg-blue-600 dark:bg-blue-500': autostart,
+            'bg-gray-200 dark:bg-zinc-700': !autostart,
+          }"
+          type="button"
+        >
+          <span class="translate-x-0 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition duration-200 ease-in-out"
+            :class="{
+              'translate-x-5 dark:bg-gray-300': autostart,
+              'translate-x-0 dark:bg-zinc-500': !autostart,
+            }"></span>
+        </button>
+      </div>
+    </div>
+    <div class="grid grid-cols-12 gap-4 items-start">
+      <label class="col-span-4 block text-right font-medium text-gray-700 dark:text-zinc-400">Run Porter when starting app</label>
+      <div class="col-span-8 pt-1.5">
+        <button @click="porterAutostart = !porterAutostart"
+          class="bg-gray-200 dark:bg-zinc-700 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full transition-colors duration-200 ease-in-out"
+          :class="{
+            'bg-blue-600 dark:bg-blue-500': porterAutostart,
+            'bg-gray-200 dark:bg-zinc-700': !porterAutostart,
+          }"
+          type="button"
+        >
+          <span class="translate-x-0 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition duration-200 ease-in-out"
+            :class="{
+              'translate-x-5 dark:bg-gray-300': porterAutostart,
+              'translate-x-0 dark:bg-zinc-500': !porterAutostart,
+            }"></span>
+        </button>
+      </div>
+    </div>
+    <div class="grid grid-cols-12 gap-4 items-start">
+      <label class="col-span-4 block text-right font-medium text-gray-700 dark:text-zinc-400 mt-px pt-2">Appearance</label>
+      <div class="col-span-8 pt-1 -mt-px">
+        <nav class="p-px border inline-flex gap-1 rounded-lg overflow-hidden bg-gray-100 dark:border-zinc-700 dark:bg-zinc-800">
+          <button @click="setAppearance('light')" class="px-2 sm:px-3 py-1 text-gray-500 font-medium rounded-md ring-inset ring-offset-0 dark:text-zinc-400" :class="{
+            'bg-white shadow-md dark:bg-zinc-700 dark:text-zinc-300': appearance === 'light',
+            'bg-gray-100 dark:bg-zinc-800 text-gray-500 hover:text-gray-700 dark:text-zinc-400 dark:hover:text-zinc-300': appearance !== 'light',
+          }">Light</button>
+          <button @click="setAppearance('dark')" class="px-2 sm:px-3 py-1 text-gray-500 font-medium rounded-md ring-inset ring-offset-0 dark:text-zinc-400" :class="{
+            'bg-white shadow-md dark:bg-zinc-700 dark:text-zinc-300': appearance === 'dark',
+            'bg-gray-100 dark:bg-zinc-800 text-gray-500 hover:text-gray-700 dark:text-zinc-400 dark:hover:text-zinc-300': appearance !== 'dark',
+          }">Dark</button>
+          <button @click="setAppearance('system')" class="px-2 sm:px-3 py-1 text-gray-500 font-medium rounded-md ring-inset ring-offset-0 dark:text-zinc-400" :class="{
+            'bg-white shadow-md dark:bg-zinc-700 dark:text-zinc-300': appearance === 'system',
+            'bg-gray-100 dark:bg-zinc-800 text-gray-500 hover:text-gray-700 dark:text-zinc-400 dark:hover:text-zinc-300': appearance !== 'system',
+          }">System</button>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="p-6 pt-0 px-8 flex justify-end">
+    <button x-on:click="popup = ''" class="p-1.5 px-3 border border-gray-300 rounded-md dark:border-zinc-700">Close</button>
+  </div>
+</div>

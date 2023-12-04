@@ -1,0 +1,50 @@
+<template x-if="cli === 'status'">
+  <div class="flex flex-col items-start whitespace-pre">
+    <div class="animate-typing">porter status</div>
+    <div class="animate-typing erase" style="animation-delay: 2.0s;">&#8203;</div>
+    <div class="animate-typing fast" style="animation-delay: 3.0s;">+-------------+--------</div>
+    <div class="animate-typing fast" style="animation-delay: 3.5s;">| Process     | Status </div>
+    <div class="animate-typing fast" style="animation-delay: 4.0s;">+-------------+--------</div>
+    <div class="animate-typing fast" style="animation-delay: 4.5s;">| intra..-dev | RUNNING</div>
+    <div class="animate-typing fast" style="animation-delay: 5.0s;">| watch..-css | RUNNING</div>
+    <div class="animate-typing fast" style="animation-delay: 5.5s;">| watch..-mon | RUNNING</div>
+    <div class="animate-typing fast" style="animation-delay: 6.0s;">+-------------+--------</div>
+    <div class="animate-typing caret-infinite" style="animation-delay: 6.9s;">&#8203;</div>
+  </div>
+</template>
+<template x-if="cli === 'start'">
+  <div class="flex flex-col items-start whitespace-pre">
+    <div class="animate-typing">porter start</div>
+    <div class="animate-typing erase" style="animation-delay: 2s;">&#8203;</div>
+    <div class="flex">
+      <div class="animate-typing fast" style="animation-delay: 3s;">Starting:</div>
+      <div class="animate-typing" style="animation-delay: 3.5s;">&#8203;</div>
+      <div class="animate-typing fast text-green-500" style="animation-delay: 5.5s;">✔</div>
+    </div>
+    <div class="animate-typing caret-infinite" style="animation-delay: 6s;">&#8203;</div>
+  </div>
+</template>
+<template x-if="cli === 'stop'">
+  <div class="flex flex-col items-start whitespace-pre">
+    <div class="animate-typing">porter stop</div>
+    <div class="animate-typing erase" style="animation-delay: 2s;">&#8203;</div>
+    <div class="flex">
+      <div class="animate-typing fast" style="animation-delay: 3s;">Stopping:</div>
+      <div class="animate-typing" style="animation-delay: 3.5s;">&#8203;</div>
+      <div class="animate-typing fast text-green-500" style="animation-delay: 5.5s;">✔</div>
+    </div>
+    <div class="animate-typing caret-infinite" style="animation-delay: 6s;">&#8203;</div>
+  </div>
+</template>
+<template x-if="cli === 'restart'">
+  <div class="flex flex-col items-start whitespace-pre">
+    <div class="animate-typing">porter restart all</div>
+    <div class="animate-typing erase" style="animation-delay: 2s;">&#8203;</div>
+    <div class="flex">
+      <div class="animate-typing fast" style="animation-delay: 3s;">Restarting:</div>
+      <div class="animate-typing" style="animation-delay: 3.5s;">&#8203;</div>
+      <div class="animate-typing fast text-green-500" style="animation-delay: 5.5s;">✔</div>
+    </div>
+    <div class="animate-typing caret-infinite" style="animation-delay: 6s;">&#8203;</div>
+  </div>
+</template>

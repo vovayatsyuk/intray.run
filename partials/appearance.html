@@ -1,0 +1,31 @@
+<script>
+  let mql;
+
+  function init() {
+    const appearance = localStorage.getItem('appearance') || 'system';
+
+    if (appearance === 'system') {
+      mql = matchMedia('(prefers-color-scheme: dark)');
+      mql.addEventListener('change', toggleDarkMode);
+    } else {
+      mql = {
+        matches: appearance === 'dark',
+      };
+    }
+
+    toggleDarkMode(mql);
+  }
+
+  init();
+
+  function toggleDarkMode(mql) {
+    document.documentElement.classList.toggle('dark', mql.matches);
+  }
+
+  document.addEventListener('intray:appearanceUpdate', () => {
+    if (mql.removeEventListener) {
+      mql.removeEventListener('change', toggleDarkMode);
+    }
+    init();
+  });
+</script>
