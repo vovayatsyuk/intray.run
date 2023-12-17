@@ -1,4 +1,4 @@
-<div x-data="logs" x-init="autoAnimate($el)" class="fixed z-10 right-4 top-4 flex flex-col gap-4 w-64 h-full pointer-events-none">
+<div x-data="logs" x-init="autoAnimate($el)" class="!fixed z-10 right-4 top-4 flex flex-col gap-4 w-64 h-full pointer-events-none">
   <template x-for="(flag, log) in logs" hidden>
     <div class="pointer-events-auto rounded-lg overflow-hidden bg-white ring-[0.5px] ring-gray-300 shadow-lg dark:bg-zinc-900 dark:text-zinc-300 dark:ring-zinc-700">
       <div class="p-2.5 py-1.5 group flex items-center justify-center relative text-xs font-medium">
