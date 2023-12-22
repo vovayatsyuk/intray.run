@@ -1,10 +1,20 @@
 import Alpine from 'alpinejs'
+import anchor from '@alpinejs/anchor'
 import focus from '@alpinejs/focus'
 import autoAnimate from '@formkit/auto-animate'
 import SimpleBar from 'simplebar'
 
 window.autoAnimate = autoAnimate;
 window.SimpleBar = SimpleBar;
+window.os = (() => {
+  var appVersion = navigator.appVersion;
+
+  if (appVersion.includes('Win')) return 'win';
+  if (appVersion.includes('Mac')) return 'mac';
+  if (appVersion.includes('Linux')) return 'linux';
+})();
+
+Alpine.plugin(anchor)
 Alpine.plugin(focus)
 
 Alpine.data('demo', () => ({
