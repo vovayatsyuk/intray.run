@@ -169,4 +169,16 @@ Done in 1661ms.`
   }
 }));
 
-Alpine.start()
+Alpine.start();
+
+if (import.meta.env.PROD) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-H4HMP55RJX');
+
+  var script = document.createElement('script');
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-H4HMP55RJX';
+  script.async = true;
+  document.head.appendChild(script);
+}
