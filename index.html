@@ -47,21 +47,25 @@
         open: false,
         links: [{
           os: 'mac',
+          size: '2.9MB',
           url: 'https://github.com/vovayatsyuk/intray.run/releases/download/v0.4.7/Intray_0.4.7_x64.dmg'
         }, {
           os: 'win',
+          size: '2.2MB',
           url: 'https://github.com/vovayatsyuk/intray.run/releases/download/v0.4.7/Intray_0.4.7_x64_en-US.msi'
         }, {
           os: 'linux',
+          size: '2.1MB',
           url: 'https://github.com/vovayatsyuk/intray.run/releases/download/v0.4.7/intray_0.4.7_amd64.deb'
         }].toSorted(item => item.os === window.os ? -1 : 0)
       }" class="self-center mt-4">
       <button @click="open = !open" x-ref="download" type="button" class="inline-block cursor-pointer px-10 py-4 rounded-lg bg-gray-900 text-white font-semibold text-lg whitespace-nowrap dark:bg-black/50">Download</button>
-      <div @click.outside="open = false" @keyup.escape.window="open = false" x-show="open" x-trap="open" x-anchor.offset.5="$refs.download" x-transition.duration.300ms x-cloak class="absolute z-10 p-1.5 w-64 rounded-md bg-gray-100 ring-[0.5px] ring-gray-300 shadow-xl dark:bg-zinc-900/90 dark:text-zinc-300 dark:ring-zinc-700">
+      <div @click.outside="open = false" @keyup.escape.window="open = false" x-show="open" x-trap="open" x-anchor.offset.5="$refs.download" x-transition.duration.300ms x-cloak class="absolute z-10 p-1.5 rounded-md bg-gray-100 ring-[0.5px] ring-gray-300 shadow-xl dark:bg-zinc-900/90 dark:text-zinc-300 dark:ring-zinc-700">
         <template x-for="item in links">
-          <a :href="item.url" target="_blank" class="flex items-center gap-2 px-3 py-1.5 text-[13px] rounded ring-offset-0 hover:bg-blue-500 hover:text-white">
+          <a :href="item.url" target="_blank" class="flex items-center gap-2 group px-2 py-1.5 text-[13px] rounded ring-offset-0 hover:bg-blue-500 hover:text-white">
             {{> download-item-icon }}
-            <span x-text="item.url.split('/').at(-1)"></span>
+            <span x-text="item.url.split('/').at(-1)" class="whitespace-nowrap"></span>
+            <span x-text="item.size" class="ml-auto pl-1 font-semibold text-xs text-gray-400 group-hover:text-white"></span>
           </a>
         </template>
       </div>
