@@ -96,11 +96,19 @@ Alpine.data('settings', () => ({
 
 Alpine.data('apps', () => ({
   apps: [{
-    name: 'intray',
+    name: 'intrayrun',
+    dir: '/Users/vova/sites/intray.run',
+    is_active: true,
+    services: [{
+      name: 'dev',
+      command: 'npm run dev',
+    }],
+  }, {
+    name: 'tauri-intray',
     dir: '/Users/vova/projects/intray',
     is_active: true,
     services: [{
-      name: 'tauri-dev',
+      name: 'dev',
       command: 'npm run tauri dev',
     }],
   }, {
@@ -108,9 +116,6 @@ Alpine.data('apps', () => ({
     dir: '/Users/vova/projects/wml',
     is_active: true,
     services: [{
-      name: 'css',
-      command: 'npm run css -- --watch',
-    }, {
       name: 'electronmon',
       command: 'npx electronmon .',
     }]
@@ -125,7 +130,7 @@ Alpine.data('logs', () => ({
     second: 'numeric',
   }),
   data: {
-    'intray-tauri-dev': [{
+    'tauri-intray-dev': [{
       date: Date.now(),
       diff: 'just now',
       content: `> tauri
@@ -138,23 +143,21 @@ Alpine.data('logs', () => ({
 
   VITE v4.5.0  ready in 454 ms
 
-  ➜  Local:   http://localhost:5174/
+  ➜  Local:   <span class="text-blue-600 dark:text-blue-500 cursor-pointer underline hover:no-underline">http://localhost:5174/</span>
   ➜  Network: use --host to expose
         Info Watching /Users/vova/projects/intray/src-tauri for changes...
    Compiling intray v0.1.0 (/Users/vova/projects/intray/src-tauri)
    Finished dev [unoptimized + debuginfo] target(s) in 10.34s
    `
     }],
-    'watchmylogs-css': [{
+    'intrayrun-dev': [{
       date: Date.now() - 52000,
       diff: '1 minute ago',
-      content: `Rebuilding...
-Done in 1661ms.`
-    }, {
-      date: Date.now() - 303000,
-      diff: '5 minutes ago',
-      content: `> watchmylogs@1.9.0 css
-> npx tailwindcss -i ./src/browser/styles.css -o ./assets/styles.css --minify --watch`
+      content: `> vite
+
+  VITE v5.0.10  ready in 1204 ms
+  ➜  Local:   <span class="text-blue-600 dark:text-blue-500 cursor-pointer underline hover:no-underline">http://localhost:5173/</span>
+  ➜  Network: use --host to expose`
     }],
    'watchmylogs-electronmon': [{
       date: Date.now() - 909000,

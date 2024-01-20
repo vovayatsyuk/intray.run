@@ -1,4 +1,4 @@
-<div x-data="logs" x-init="autoAnimate($el)" class="!fixed z-10 right-4 top-4 flex flex-col gap-4 w-64 h-full pointer-events-none">
+<div x-data="logs" x-init="autoAnimate($el)" class="!fixed z-10 right-4 top-4 flex flex-col gap-4 w-80 h-full pointer-events-none">
   <template x-for="(flag, log) in logs" hidden>
     <div class="pointer-events-auto rounded-lg overflow-hidden bg-white ring-[0.5px] ring-gray-300 shadow-lg dark:bg-zinc-900 dark:text-zinc-300 dark:ring-zinc-700">
       <div class="p-2.5 py-1.5 group flex items-center justify-center relative text-xs font-medium">
@@ -8,14 +8,14 @@
         </button>
         <span x-text="log"/>
       </div>
-      <ul x-data="{}" x-init="new SimpleBar($el)" class="overflow-auto h-28 px-2">
+      <ul x-data="{}" x-init="new SimpleBar($el)" class="overflow-auto h-36 px-2">
         <template x-for="record in data[log]" hidden>
           <li class="flex flex-col gap-2 p-2 px-2.5 -mx-2">
             <div class="select-none pointer-events-none flex gap-1 items-center p-2.5 py-0.5 rounded-r-full bg-gray-100 text-gray-400 -ml-2.5 dark:bg-zinc-800/80 dark:text-zinc-400/70">
               <span x-text="timeFormatter.format(record.date)"></span>/
               <span x-text="record.diff"></span>
             </div>
-            <div x-text="record.content" class="font-mono whitespace-pre text-[12px] px-1"></div>
+            <div x-html="record.content" class="font-mono whitespace-pre text-[12px] px-1"></div>
           </li>
         </template>
       </ul>

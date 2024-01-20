@@ -1,19 +1,23 @@
 <div>
-  <button @click="openLog('intray-tauri-dev')" class="flex items-center gap-1.5 py-0.5 px-2 rounded hover:bg-blue-500 hover:text-white group w-full text-left cursor-default ring-offset-0" type="button">
+  <button @click="openLog('intrayrun-dev')" aria-label="Open log in popup window" data-microtip-position="top" role="tooltip" class="flex items-center gap-1.5 py-0.5 px-2 rounded hover:bg-blue-500 hover:text-white group w-full text-left cursor-default ring-offset-0" type="button">
     <svg class="text-green-500" :class="{
       'text-green-500': isRunning(),
       'text-yellow-500': !isRunning() && !isStopped(),
       'text-white': isStopped(),
     }" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg>
-    intray-tauri-dev
+    intrayrun-dev
   </button>
-  <button @click="openLog('watchmylogs-css')" class="flex items-center gap-1.5 py-0.5 px-2 rounded hover:bg-blue-500 hover:text-white group w-full text-left cursor-default ring-offset-0" type="button">
+  <button x-show="isRunning()" aria-label="Open URL in default browser" data-microtip-position="top" role="tooltip" class="flex items-center gap-1.5 py-0.5 px-2 rounded hover:bg-blue-500 hover:text-white group w-full text-left cursor-default ring-offset-0" type="button">
+    <svg class="text-green-500 opacity-0" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg>
+    http://localhost:5173/
+  </button>
+  <button @click="openLog('tauri-intray-dev')" class="flex items-center gap-1.5 py-0.5 px-2 rounded hover:bg-blue-500 hover:text-white group w-full text-left cursor-default ring-offset-0" type="button">
     <svg class="text-green-500" :class="{
       'text-green-500': isRunning(),
       'text-yellow-500': !isRunning() && !isStopped(),
       'text-white': isStopped(),
     }" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg>
-    watchmylogs-css
+    tauri-intray-dev
   </button>
   <button @click="openLog('watchmylogs-electronmon')" class="flex items-center gap-1.5 py-0.5 px-2 rounded hover:bg-blue-500 hover:text-white group w-full text-left cursor-default ring-offset-0" type="button">
     <svg class="text-green-500" :class="{
@@ -56,7 +60,7 @@
 
 <div>
   <button class="flex items-center gap-1.5 py-0.5 px-2 rounded hover:bg-blue-500 hover:text-white pointer-events-none text-gray-400/80 w-full text-left cursor-default" disabled type="button">
-    Version 0.5.0
+    Version 0.6.0
   </button>
   <button @click="openSettings" class="flex items-center gap-1.5 py-0.5 px-2 rounded hover:bg-blue-500 hover:text-white w-full text-left cursor-default ring-offset-0" type="button">Settings...</button>
 </div>
