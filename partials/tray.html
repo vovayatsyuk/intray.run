@@ -1,5 +1,5 @@
 <div>
-  <button @click="openLog('intrayrun-dev')" aria-label="Open log in popup window" data-microtip-position="top" role="tooltip" class="flex items-center gap-1.5 py-0.5 px-2 rounded hover:bg-blue-500 hover:text-white group w-full text-left cursor-default ring-offset-0" type="button">
+  <button @click="openLog('intrayrun-dev')" aria-label="Open logview popup window" data-microtip-position="top" role="tooltip" class="flex items-center gap-1.5 py-0.5 px-2 rounded hover:bg-blue-500 hover:text-white group w-full text-left cursor-default ring-offset-0" type="button">
     <svg class="text-green-500" :class="{
       'text-green-500': isRunning(),
       'text-yellow-500': !isRunning() && !isStopped(),
