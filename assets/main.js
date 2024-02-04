@@ -23,6 +23,16 @@ Alpine.data('demo', () => ({
   popup: '',
   logs: {},
 
+  init() {
+    if (window.location.hash === '#changelog') {
+      this.openChangelog();
+    }
+  },
+
+  openChangelog() {
+    this.popup = 'changelog';
+  },
+
   openSettings() {
     this.popup = 'settings';
   },

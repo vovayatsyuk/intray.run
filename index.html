@@ -17,14 +17,14 @@
     <div class="off-mask"></div>
 
     <div class="text-center">
-      <h1 class="text-8xl font-extrabold mb-2 dark:text-white">Intray</h1>
+      <h1 class="text-7xl xs:text-8xl font-extrabold mb-2 dark:text-white">Intray</h1>
       <h2 class="text-xl text-pretty text-gray-600 dark:text-zinc-400">
         Unofficial GUI for <a class="hover:underline text-black dark:text-zinc-300" href="https://github.com/anystack-sh/porter" title="CLI tool to orchestrate background tasks" target="_blank" rel="noopener">Porter app</a>.
         Background process runner.
       </h2>
     </div>
 
-    <div x-data="demo" x-on:keyup.escape.window="popup = ''" class="relative self-center text-[13px] cursor-default select-none text-gray-900 dark:text-zinc-400 flex">
+    <div x-data="demo" x-on:keyup.escape.window="popup = ''" class="flex justify-center w-full xs:w-auto relative self-center text-[13px] cursor-default select-none text-gray-900 dark:text-zinc-400">
       <div class="flex" :class="{'opacity-0': popup}">
         <div class="mt-px p-1.5 w-52 xs:w-64 rounded-md bg-gray-200/80 ring-[0.5px] ring-gray-300 shadow-xl space-y-1 dark:bg-zinc-900/80 dark:text-zinc-300 dark:ring-zinc-700">
           {{> tray }}
@@ -36,11 +36,16 @@
       <template x-if="popup === 'apps'" hidden>
         {{> apps }}
       </template>
+      <template x-if="popup === 'changelog'" hidden>
+        {{> changelog }}
+      </template>
       <template x-if="popup === 'settings'" hidden>
         {{> settings }}
       </template>
       {{> logs }}
-      {{> demo-arrow }}
+      <div x-show="popup !== 'changelog'">
+        {{> demo-arrow }}
+      </div>
     </div>
 
     <div x-data="{
