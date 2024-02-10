@@ -153,8 +153,6 @@ Alpine.data('logs', () => ({
 
   VITE v4.5.0  ready in 454 ms
 
-  ➜  Local:   <span class="text-blue-600 dark:text-blue-500 cursor-pointer underline hover:no-underline">http://localhost:5174/</span>
-  ➜  Network: use --host to expose
         Info Watching /Users/vova/projects/intray/src-tauri for changes...
    Compiling intray v0.1.0 (/Users/vova/projects/intray/src-tauri)
    Finished dev [unoptimized + debuginfo] target(s) in 10.34s
